@@ -12,6 +12,28 @@ class GildedRose
 end
 
 class Item
+  def initialize(name, sell_in, quality)
+    @rose = Rose.new(name, sell_in, quality)
+  end
+
+  def update
+    @rose.update
+  end
+
+  def sell_in
+    @rose.sell_in
+  end
+
+  def quality
+    @rose.quality
+  end
+
+  def to_s
+    @rose.to_s
+  end
+end
+
+class Rose
   attr_accessor :name, :sell_in, :quality
 
   def initialize(name, sell_in, quality)
@@ -70,3 +92,5 @@ class Item
     end
   end
 end
+
+# TODO, create Rose class for each kind of roses which update sell_in and quality based on their own rules
