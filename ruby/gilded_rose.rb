@@ -1,3 +1,4 @@
+require 'forwardable'
 class GildedRose
 
   def initialize(items)
@@ -12,25 +13,12 @@ class GildedRose
 end
 
 class Item
+  extend Forwardable
   def initialize(name, sell_in, quality)
     @rose = Rose.new(name, sell_in, quality)
   end
 
-  def update
-    @rose.update
-  end
-
-  def sell_in
-    @rose.sell_in
-  end
-
-  def quality
-    @rose.quality
-  end
-
-  def to_s
-    @rose.to_s
-  end
+  def_delegators :@rose, :update, :sell_in, :quality, :to_s
 end
 
 class Rose
